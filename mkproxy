@@ -72,7 +72,7 @@ if [ "$cmd" == "up" ]; then
   sed -e "s/\${ip}/$ip/" -e "s/\${port}/$port/" conf.template >> proxy_ssl.conf
 
   # Run the container.
-  docker run --rm --name $name -d -v `pwd`:/etc/nginx/conf.d -p 443:443 nginx
+  docker run --rm --name $name -d -v `pwd`:/etc/nginx/conf.d -p 80:80 -p 443:443 nginx
 else
   if [ ! -f proxy_ssl.conf ]; then
     echo "No proxy is running from this directory (proxy_ssl.conf is missing)"
